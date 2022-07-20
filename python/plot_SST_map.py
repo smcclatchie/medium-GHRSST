@@ -37,7 +37,6 @@ def plot_map(region):
     ds = xr.open_dataset(d)
     
     # open single variables in the xarray dataset
-    # sst_3d = ds["analysed_sst"] + 273.15
     sst_3d = ds["analysed_sst"] 
     #reduce dimensions to 2d
     sst = sst_3d.squeeze()
@@ -90,11 +89,6 @@ def plot_map(region):
     cbar.ax.tick_params(labelsize=7, colors='salmon') 
     # cbar.set_label('SST $^0C$', size='xx-small')
 
-
-    # Draw gridlines
-    # test changed from True
-    # gl = ax.gridlines(draw_labels=False)
-
     # test change from drawl_labels = True
     gl = ax.gridlines(
         draw_labels=True,
@@ -112,18 +106,6 @@ def plot_map(region):
     if region == "New_Zealand":
         gl.xlocator = mticker.FixedLocator([163, 167, 171, 175, 179])
         gl.ylocator = mticker.FixedLocator([-48, -46, -44, -42, -40, -38, -36, -34, -32])
-    # elif region == "Peru":
-    #     gl.xlocator = mticker.FixedLocator([-85.0, -84.0, -83.0, -82.0, -81.0, -80.0])
-    #     gl.ylocator = mticker.FixedLocator([-7.0, -6.0, -5.0, -4.0, -3.0, -2.0])
-    # elif region == "Australia":
-    #     gl.xlocator = mticker.FixedLocator([150, 152, 154, 156, 158, 160, 162, 164])
-    #     gl.ylocator = mticker.FixedLocator([-32, -30, -28, -26, -24, -22, -20])
-    # elif region == "Baja Sur":
-    #     gl.xlocator = mticker.FixedLocator([-125, -121, -117, -113, -109, -105])
-    #     gl.ylocator = mticker.FixedLocator([15, 18, 21, 24, 27, 30])
-    # elif region == "Costa Rica":
-    #     gl.xlocator = mticker.FixedLocator([-90, -88, -86, -84, -82, -80])
-    #     gl.ylocator = mticker.FixedLocator([5, 7, 9, 11, 13, 15])
     elif region == "California":
         gl.xlocator = mticker.FixedLocator([-130, -128, -126, -124, -122, -120, -118, -116])
         gl.ylocator = mticker.FixedLocator([31, 33, 35, 37, 39, 41, 43])
